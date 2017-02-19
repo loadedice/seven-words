@@ -4,6 +4,7 @@ a silly "sentence generator" in datalog
 Also included: the lyrics to "Down Under" by "Men at Work" as a fact file for testing if you wanted.
 
 **NOTE**: I've only tested this with Soufflé and I think they do some things differently to how other datalog thingies might work. so yeah.
+
 **ALSO NOTE**: This was really just an experiment and hasn't been properly tested
 
 ## HOW TO USE
