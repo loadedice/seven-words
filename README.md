@@ -1,9 +1,15 @@
 # seven-words
-a silly sentence generator in datalog
+a silly "sentence generator" in datalog
+
 Also included: the lyrics to "Down Under" by "Men at Work" as a fact file for testing if you wanted.
 
+**NOTE**: I've only tested this with Soufflé and I think they do some things differently to how other datalog thingies might work. so yeah.
+
+**ALSO NOTE**: This was really just an experiment and hasn't been properly tested
+
 ## HOW TO USE
-* Use `words2facts.py` to convert a plaintext document into "facts" that the Soufflé datalog engine can deal with.
+* Compile all the datalog with Soufflé
+* Use `words2facts.py` to convert a plaintext document into "facts" that the Soufflé datalog implementation can deal with.
 * Use `n-gram` to find all the bigrams and 7grams in the text, these will be output in `bigram.csv` and `sevengram.csv` respectivly
 * Change the file extension from `csv` to `facts`
 * Use `sentence` to start generating its own "sentences"
