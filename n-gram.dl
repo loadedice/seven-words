@@ -1,0 +1,22 @@
+.type Word
+
+// the set Words has all the words and their position in the text
+.decl words (i:number, w:Word) input
+
+// bigram is all the bigrams
+.decl bigram (w:Word, w1:Word) output
+
+// These aren't important for the sentence generation, but it's nice to see how easy datalog makes it to define these.
+//.decl trigram (w:Word, w1:Word, w2:Word) output
+//.decl fourgram (w:Word, w1:Word, w2:Word, w3:Word) output
+
+// I was gonna call it 7-gram but soufle wouldn't let me
+.decl sevengram (w:Word, w1:Word, w2:Word, w3:Word, w4:Word, w5:Word, w6:Word) output
+
+bigram(w, w1) :- words(i, w), words(i+1, w1).
+
+//trigram(w, w1, w2) :- words(i, w), words(i+1, w1), words(i+2, w2).
+//fourgram(w, w1, w2, w3) :- words(i, w), words(i+1, w1), words(i+2, w2), words(i+3, w3).
+
+sevengram(w, w1, w2, w3, w4, w5, w6) :- words(i, w), words(i+1, w1), words(i+2, w2), words(i+3, w3),
+	words(i+4, w4), words(i+5, w5), words(i+6, w6).
