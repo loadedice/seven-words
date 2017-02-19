@@ -15,9 +15,13 @@ a silly "sentence generator" in datalog
     * There are some limitations on how often a word can repeat, this is to stop getting things like "yeah yeah yeah yeah yeah yeah" as a "sentence"
 * The final output will be in sentence.csv, it might be littered with \r and other stuff so you might want to clean that up
 
+
+OR
+
+Run `./generate.sh [path to text file]` and there'll be a directory created named after the file specified, in that directory there'll be `sentences.csv` which has all the sentences
+
 ## TODO
 * Neaten up some of the code and put in comments where needed
-* Write a script to automate the whole proccess
 
 ## ISSUES
 * It doesn't care at all about newlines or punctuation, leading to weird results, but also the results are weird anyway.
