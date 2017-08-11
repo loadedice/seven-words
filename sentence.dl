@@ -1,10 +1,11 @@
 .type Word
 
 // words has all the words and their position in the text
-.decl words (i:number, w:Word) input
+.decl words (i:number, w:Word)
+.input words
 
 // bigram is all the bigrams
-.decl bigram (w:Word, w1:Word)
+.decl bigram (w0:Word, w1:Word)
 
 //// These aren't important for the sentence generation, but it's nice to see how easy datalog
 //// makes it to define these.
@@ -12,20 +13,21 @@
 //.decl fourgram (w:Word, w1:Word, w2:Word, w3:Word)
 
 // I was gonna call it 7-gram but it wouldn't let me
-.decl sevengram (w:Word, w1:Word, w2:Word, w3:Word, w4:Word, w5:Word, w6:Word)
+.decl sevengram (w0:Word, w1:Word, w2:Word, w3:Word, w4:Word, w5:Word, w6:Word)
 
-bigram(w, w1) :- words(i, w), words(i+1, w1).
+bigram(w0, w1) :- words(i, w0), words(i+1, w1).
 
 //trigram(w, w1, w2) :- words(i, w), words(i+1, w1), words(i+2, w2).
 //fourgram(w, w1, w2, w3) :- words(i, w), words(i+1, w1), words(i+2, w2), words(i+3, w3).
 
-sevengram(w, w1, w2, w3, w4, w5, w6) :- words(i, w), words(i+1, w1), words(i+2, w2), words(i+3, w3),
+sevengram(w0, w1, w2, w3, w4, w5, w6) :- words(i, w0), words(i+1, w1), words(i+2, w2), words(i+3, w3),
 	words(i+4, w4), words(i+5, w5), words(i+6, w6).
 
 // Each "sentence" is 7 words long
-.decl sentence (a:Word, b:Word, c:Word, d:Word, e:Word, f:Word, g:Word) output
+.decl sentence (a:Word, b:Word, c:Word, d:Word, e:Word, f:Word, g:Word)
+.output sentence
 
 sentence(a, b, c, d, e, f, g) :- bigram(a, b), bigram(b, c),
 	bigram(c, d), bigram(d, e), bigram(e, f), bigram(f, g),
-	a!= c, c != e, e != g, b != d, d != f,
+	a != c, c != e, e != g, b != d, d != f,
 	!sevengram(a, b, c, d, e, f, g).
